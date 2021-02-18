@@ -4,5 +4,8 @@ function Investment(params) {
   
   this.stock  = p.stock;
   this.shares = p.shares;
+  this.sharePrice = p.sharePrice;
+
+  this.cost = this.shares * this.sharePrice;
   
 }
