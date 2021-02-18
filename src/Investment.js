@@ -1,5 +1,10 @@
-function Investment(stock) {
+function Investment(params) {
 
-  this.stock = stock;
-
+  let p = params || {};
+  
+  this.stock  = p.stock;
+  this.shares = p.shares;
+  
+  console.log('params', params);
+  console.log('p', p);
 }
