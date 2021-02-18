@@ -13,7 +13,6 @@ describe("Investment", () => {
     });
 
   });
-
   
   it("Should be of a stock", () => {
     expect(investment.stock).toBe(stock);
