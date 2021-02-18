@@ -8,7 +8,8 @@ describe("Investment", () => {
 
     investment = new Investment({
       stock: stock,
-      shares: 100
+      shares: 100,
+      sharePrice: 20
     });
 
   });
