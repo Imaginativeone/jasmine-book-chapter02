@@ -1,28 +1,15 @@
 const express = require("express");
 const server = express();
-// const port = 4000;
 const port = 8001;
 const body_parser = require('body-parser');
-
-server.use(express.static('public'));
-server.use(express.static(__dirname));
 
 let data = require('./data');
 let initialData = JSON.parse(JSON.stringify(data));
 
-// parse application/x-www-form-urlencoded
-server.use(body_parser.urlencoded({ extended: false }))
-
-// parse application/json
-server.use(body_parser.json())
-
-server.use(function (req, res) {
-  res.setHeader('Content-Type', 'text/plain')
-  res.write('you posted:\n')
-  res.end(JSON.stringify(req.body, null, 2))
-})
-
-// server.use(body_parser.json());
+server.use(body_parser.json());
+server.use(express.static('public'));
+server.use(express.static(__dirname));
+server.use(body_parser.urlencoded({ extended: false }));
 
 // server.get('/', (req, res) => {
 //   res.send(data);
