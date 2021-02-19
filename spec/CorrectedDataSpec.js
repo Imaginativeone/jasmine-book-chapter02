@@ -21,6 +21,12 @@ describe('Correct the data:', () => {
       expect(hobbies).toBeTruthy();
     })
 
+    let favorites = tryUrl('/favorites');
+    it ('Should have a favorites array, from a returned promise', () => {
+      console.log('favorites', favorites);
+      expect(favorites).toBeTruthy();
+    })
+
   });
 
   xit('Should have a PromiseAll to work with', () => {
