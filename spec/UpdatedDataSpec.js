@@ -60,7 +60,13 @@ describe('Updated Data Spec', () => {
 
             expect(true).toBe(true);
             done();
-          })              
+
+            return p;
+            
+          })
+          .then((updatedArray) => {
+            console.log('updatedArray', updatedArray);
+          })
         })
 
       })
