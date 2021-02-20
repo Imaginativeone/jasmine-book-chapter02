@@ -27,15 +27,16 @@ describe('Corrected Data Spec', () => {
           })
         }) ///////////////////////////////////
 
-        it ('CorrectedDataSpec: Promise.all() Elements are available here', (done) => {
+        it ('CorrectedDataSpec: Correct the elements', (done) => {
           allPromises.then((elements) => {
-            console.log('elements', elements);
 
-            let usrs = elements[0];
-            let hobs = elements[1];
-            let favs = elements[2];
+            // console.log('elements: before', elements); // same as line 40
 
-            console.log('usrs', usrs, 'hobs', hobs, 'favs', favs);
+            elements[0] = correctUsers(elements[0], 'PA');
+            elements[1] = correctUsers(elements[1]);
+            elements[2] = correctUsers(elements[2]);
+
+            console.log('elements: after', elements);
 
             expect(true).toBe(true);
             done();
