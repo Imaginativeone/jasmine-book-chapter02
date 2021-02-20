@@ -34,7 +34,7 @@ describe('Corrected Data Spec', () => {
 
             elements[0] = correctUsers(elements[0], 'PA');
             elements[1] = correctHobbies(elements[1]);
-            elements[2] = correctUsers(elements[2]);
+            elements[2] = correctFavorites(elements[2]);
 
             console.log('elements: after', elements);
 
