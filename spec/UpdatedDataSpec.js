@@ -57,43 +57,48 @@ describe('Updated Data Spec', () => {
 
       })
       .then((updatedArray) => {
-      
-      const flaggedHobs = addTypeFlag(updatedArray[1], 'hobby');
-      const flaggedFavs = addTypeFlag(updatedArray[2], 'favorite');
 
-      const data = updatedArray[0].concat(flaggedHobs, flaggedFavs)
+      const flaggedUsrs = addTypeFlag(updatedArray[0], 'updated-user');
+      const flaggedHobs = addTypeFlag(updatedArray[1], 'updated-hobby');
+      const flaggedFavs = addTypeFlag(updatedArray[2], 'updated-favorite');
+
+      const data = flaggedUsrs.concat(flaggedHobs, flaggedFavs)
 
       const superList = data.map((superUser) => {
 
-        if (superUser.user_id) {
-          superUser.superUser = superUser.user_id;
+        if (!superUser.user_id) {
+            superUser.superUser = superUser.id;
         } else {
-          superUser.superUser = superUser.id;
+            superUser.superUser = superUser.user_id;
         }
 
         return superUser;
 
       }).sort((a, b) => a.superUser - b.superUser);
 
-      let sUser = [];
+      console.log('superList', superList);
+
+      let sUser = [{}];
       let hobbyArray = [];
 
-      superList.forEach((simUser) => {
+      superList.map((simUser) => {
 
-        const id = simUser.superUser;
+        // const id = simUser.superUser;
 
         // If this object already exists
-        if (sUser[id]) {
-            // console.log('simUser', simUser);
-            console.log('sUser[' + id + '] already exists. It\'s a ' + simUser.infotype);
-        } else {
-            console.log('Create a new sUser[' + id + '] here');
-        }
+        if (sUser[simUser.superUser]) { 
+            console.log('sUser[' + simUser.superUser + '] already exists. It\'s an ' + simUser.infotype);
+            console.log(sUser[simUser.superUser]);
 
-        sUser[id] = {}
-        sUser.id = id;
-        
-        // console.log('sUser', sUser[id]);
+            sUser[simUser.superUser].gribbit = 0;
+
+        } else {
+            console.log('Create a new sUser[' + simUser.superUser + '] here. It\'s an ' + simUser.infotype);
+            sUser[simUser.superUser] = simUser;
+            sUser[simUser.superUser].hobbyArray = [];
+
+            console.log(sUser[simUser.superUser]);
+        }
 
       })
       
@@ -101,6 +106,7 @@ describe('Updated Data Spec', () => {
 
       // console.log('data', data);
       console.log('superList', superList);
+      console.log(sUser);
 
       })
     })
