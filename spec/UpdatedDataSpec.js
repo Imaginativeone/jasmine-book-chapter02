@@ -41,36 +41,27 @@ describe('Updated Data Spec', () => {
           })
         }) ///////////////////////////////////
 
-        it ('CorrectedDataSpec: Update the elements', (done) => {
-          allPromises.then(elements => {
+        it ('CorrectedDataSpec: Update the elements', (done) => { // This needs a Promise.all();
+          allPromises.then((data) => {
 
-            // console.log('elements: before', elements); // same as line 40
+            console.log('data', data);
 
-            elements[0] = tryUrl('/updateUsers', elements[0], 'post')
-                .then((updatedUsers) => {
-                    console.log('updatedUser', updatedUsers);
-                })
+            let u = tryUrl('/updateUsers',     data[0], 'post');
+            console.log('u', u);
+            
+            let h = tryUrl('/updateHobbies',   data[1], 'post');
+            console.log('h', h);
 
-            elements[1] = tryUrl('/updateHobbies', elements[1], 'post')
-                .then((updatedHobbies) => {
-                    console.log('updatedHobbies', updatedHobbies);
-                })
-                
-            elements[2] = tryUrl('/updateFavorites', elements[2], 'post')
-                .then((updatedFavorites) => {
-                    console.log('updatedFavorites', updatedFavorites);
-                })
+            let f = tryUrl('/updateFavorites', data[2], 'post');
+            console.log('f', f);
 
-            // elements[0] = correctUsers(elements[0], 'PA');
-            // elements[1] = correctHobbies(elements[1]);
-            // elements[2] = correctFavorites(elements[2]);
-
-            console.log('updated elements: after', elements);
+            let p = Promise.all([u, h, f]);
+            console.log('p', p);
 
             expect(true).toBe(true);
             done();
-          })
-        }) ///////////////////////////////////
+          })              
+        })
 
       })
 
