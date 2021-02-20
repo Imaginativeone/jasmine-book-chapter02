@@ -29,7 +29,7 @@ describe('Single Promise Chain App', () => {
       it ('Creates a Promise.all()', (done) => {
         let allPromises = Promise.all([tryUrl('/users'), tryUrl('/hobbies'), tryUrl('/favorites')])
           .then(result => {
-            console.log('it-then: result', result);
+            // console.log('it-then: result', result);
             // expect(result).toEqual(result);
             expect(true).toEqual(true);        
             done();

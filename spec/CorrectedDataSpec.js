@@ -10,17 +10,17 @@ describe('Corrected Data Spec', () => {
         return result;
       })
       describe('CorrectedDataSpec: allPromises, working with the Promise.all()', () => {
-        console.log('allPromises', allPromises);
+        // console.log('allPromises', allPromises);
         
         it ('CorrectedDataSpec: Promise.all() Elements are available here', (done) => {
           allPromises.then((elements) => {
-            console.log('elements', elements);
+            // console.log('elements', elements);
 
             let usrs = elements[0];
             let hobs = elements[1];
             let favs = elements[2];
 
-            console.log('usrs', usrs, 'hobs', hobs, 'favs', favs);
+            // console.log('usrs', usrs, 'hobs', hobs, 'favs', favs);
 
             expect(true).toBe(true);
             done();
@@ -36,7 +36,7 @@ describe('Corrected Data Spec', () => {
             elements[1] = correctHobbies(elements[1]);
             elements[2] = correctFavorites(elements[2]);
 
-            console.log('elements: after', elements);
+            // console.log('elements: after', elements);
 
             expect(true).toBe(true);
             done();
