@@ -15,3 +15,9 @@ function tryUrl(url, data, method='get') {
   return f;
 
 }
+
+function correctUsers(data, state) {
+
+  return data;
+
+}
