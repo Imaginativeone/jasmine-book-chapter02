@@ -35,17 +35,12 @@ describe('Single Promise Chain App', () => {
             done();
           })
           // console.log('allPromises', allPromises);  
-        })
-
-    })
-    describe('B', () => {})
-
-
+      });
     });
-  
-    
-})
+  });
+});
 
+// describe('B', () => {})
 // xdescribe('A', () => {
 //   it ('A', () => {})
 // });

@@ -4,24 +4,23 @@ describe('Corrected Data Spec', () => {
 
     let allPromises = Promise.all([tryUrl('/users'), tryUrl('/hobbies'), tryUrl('/favorites')])
       .then(result => {
-        console.log('it-then: result', result);
+        // console.log('it-then: result', result);
         // expect(result).toEqual(result);
         expect(true).toEqual(true);        
-        // done();
         return result;
       })
-      .then((data) => {
-        console.log('data', data);
-        describe('data: C', () => {}) // Not presented
-        // done();
+      describe('CorrectedDataSpec: allPromises, working with the Promise.all()', () => {
+        console.log('allPromises', allPromises);
+        
+        it ('CorrectedDataSpec: First Working it() Elements', (done) => {
+          allPromises.then((elements) => {
+            console.log('elements', elements);
+            expect(true).toBe(true);
+            done();
+          })
+        })
       })
-      describe('allPromises', () => {})
-      console.log('allPromises', allPromises);  
 
-      it ('CorrectedDataSpec: Creates a Promise.all()', () => {
-        expect(true).toBe(true);
-      })
-      
       it ('Another it', () => {
         expect(true).toBe(true);
       })
