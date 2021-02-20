@@ -12,9 +12,13 @@ describe('Corrected Data Spec', () => {
       describe('CorrectedDataSpec: allPromises, working with the Promise.all()', () => {
         console.log('allPromises', allPromises);
         
-        it ('CorrectedDataSpec: First Working it() Elements', (done) => {
+        it ('CorrectedDataSpec: Promise.all() Elements are available here', (done) => {
           allPromises.then((elements) => {
             console.log('elements', elements);
+
+            let users = elements[0];
+            console.log('users', users);
+
             expect(true).toBe(true);
             done();
           })
