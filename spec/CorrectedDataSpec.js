@@ -33,7 +33,7 @@ describe('Corrected Data Spec', () => {
             // console.log('elements: before', elements); // same as line 40
 
             elements[0] = correctUsers(elements[0], 'PA');
-            elements[1] = correctUsers(elements[1]);
+            elements[1] = correctHobbies(elements[1]);
             elements[2] = correctUsers(elements[2]);
 
             console.log('elements: after', elements);
