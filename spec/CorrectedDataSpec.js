@@ -16,13 +16,32 @@ describe('Corrected Data Spec', () => {
           allPromises.then((elements) => {
             console.log('elements', elements);
 
-            let users = elements[0];
-            console.log('users', users);
+            let usrs = elements[0];
+            let hobs = elements[1];
+            let favs = elements[2];
+
+            console.log('usrs', usrs, 'hobs', hobs, 'favs', favs);
 
             expect(true).toBe(true);
             done();
           })
-        })
+        }) ///////////////////////////////////
+
+        it ('CorrectedDataSpec: Promise.all() Elements are available here', (done) => {
+          allPromises.then((elements) => {
+            console.log('elements', elements);
+
+            let usrs = elements[0];
+            let hobs = elements[1];
+            let favs = elements[2];
+
+            console.log('usrs', usrs, 'hobs', hobs, 'favs', favs);
+
+            expect(true).toBe(true);
+            done();
+          })
+        }) ///////////////////////////////////
+
       })
 
       it ('Another it', () => {
