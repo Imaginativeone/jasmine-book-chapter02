@@ -105,7 +105,7 @@ describe('Updated Data Spec', () => {
         } else {
 
             console.log('********** Beg of NEW element **********');
-            console.log('Create a new sUser[' + simUser.superUser + '] here. It\'s an ' + simUser.infotype);
+            console.log('Create a new sUser[' + simUser.superUser + '] here: ' + simUser.infotype);
             sUser[simUser.superUser] = simUser;
             // sUser[simUser.superUser].hobbyArray = [];
 
