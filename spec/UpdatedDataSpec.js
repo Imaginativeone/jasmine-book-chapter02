@@ -89,8 +89,41 @@ describe('Updated Data Spec', () => {
         if (sUser[simUser.superUser]) { 
 
             console.log('********** Beg of EXT element **********');
-            console.log('sUser[' + simUser.superUser + '] already exists. It\'s an ' + simUser.infotype);
-            console.log(sUser[simUser.superUser]);
+            
+            if (simUser.infotype === 'updated-user') { 
+
+                console.log('This is an updated-user that already exists');
+                console.log('sUser[' + simUser.superUser + '] already exists. It\'s an ' + simUser.infotype);
+                console.log('Current User', sUser[simUser.superUser]);
+                console.log('Current Element', simUser);
+                
+            } else {
+
+                if (sUser[simUser.superUser].infotype === 'updated-user') {
+
+                    if (simUser.infotype === 'updated-hobby') {
+
+                        console.log('Hello');
+
+                    }
+
+                }
+                // If current element is a hobby, add to the parent object's hobby array.
+                // sUser[simUser.superUser].hobbiesArray = [];
+                // sUser[simUser.superUser].hobbiesArray.push(simUser);
+                ////////////////////////////////////////////////////
+
+                console.log('Is this related to an updated-user object?');
+                console.log(sUser[simUser.superUser].infotype);
+
+                console.log('sUser[' + simUser.superUser + '] already exists. This element is an ' + simUser.infotype);
+                console.log('Current User', sUser[simUser.superUser]);
+                console.log('Current Element', simUser);
+
+                console.log('This is a simulated-user that already exists');
+                console.log(simUser);
+
+            }
 
             // sUser[simUser.superUser].gribbit = 0;
 
@@ -106,24 +139,32 @@ describe('Updated Data Spec', () => {
 
             console.log('********** Beg of NEW element **********');
             console.log('Create a new sUser[' + simUser.superUser + '] here: ' + simUser.infotype);
+            
             sUser[simUser.superUser] = simUser;
-            // sUser[simUser.superUser].hobbyArray = [];
+            console.log('sUser[' + simUser.superUser + ']', sUser[simUser.superUser]);
 
-            // Create the favorites array and add this element to it.
-            if (simUser.infotype === 'updated-hobby') {
-                console.log('Add this favorite to NEW empty hobby array.');
-                sUser[simUser.superUser].hobbiesArray = [];
-                sUser[simUser.superUser].hobbiesArray.push(simUser);
+            // If not an updated-user, then element is a simulated user
+            if (simUser.infotype === 'updated-user') {
+
+            // Simulated users
+            } else {
+
+                // Create the hobbies array and add this element to it.
+                if (simUser.infotype === 'updated-hobby') {
+                    console.log('Add this favorite to NEW empty hobby array.');
+                    sUser[simUser.superUser].hobbiesArray = [];
+                    sUser[simUser.superUser].hobbiesArray.push(simUser);
+                }
+    
+                // Create the favorites array and add this element to it.
+                if (simUser.infotype === 'updated-favorite') {
+                    console.log('Add this favorite to NEW empty favorites array.');
+                    sUser[simUser.superUser].favoritesArray = [];
+                    sUser[simUser.superUser].favoritesArray.push(simUser);
+                }
+    
             }
 
-            // Create the favorites array and add this element to it.
-            if (simUser.infotype === 'updated-favorite') {
-                console.log('Add this favorite to NEW empty favorites array.');
-                sUser[simUser.superUser].favoritesArray = [];
-                sUser[simUser.superUser].favoritesArray.push(simUser);
-            }
-
-            console.log(sUser[simUser.superUser]);
             console.log('********** End of NEW element **********');
         }
 
