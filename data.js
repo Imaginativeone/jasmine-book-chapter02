@@ -21,8 +21,8 @@ exports.hobbies = [
   {"id":40,"user_id":4,"name":"golf","years_played":1,"experience":"beginner","last_modified":""},
   {"id":41,"user_id":4,"name":"knitting","years_played":2,"experience":"","last_modified":""},
   
-  {"id":50,"user_id":5,"name":"golf","years_played":1,"experience":"beginner","last_modified":""},
-  {"id":51,"user_id":5,"name":"knitting","years_played":2,"experience":"advanced","last_modified":""},
+  {"id":50,"user_id":5,"name":"golf","years_played":1,"experience":"","last_modified":""},
+  {"id":51,"user_id":5,"name":"knitting","years_played":2,"experience":"","last_modified":""},
   {"id":52,"user_id":5,"name":"kayaking","years_played":3,"experience":"","last_modified":""},
 
   {"id":60,"user_id":6,"name":"golf","years_played":1,"experience":"","last_modified":""},

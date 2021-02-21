@@ -101,12 +101,48 @@ describe('Updated Data Spec', () => {
 
                 if (sUser[simUser.superUser].infotype === 'updated-user') {
 
-                    if (simUser.infotype === 'updated-hobby') {
-
+                    // This element is an updated hobby, no previous hobbies (create hobby array)
+                    if ((simUser.infotype === 'updated-hobby') && (!sUser[simUser.superUser].hobbiesArray)) {
                         console.log('Considering adding this ' + simUser.infotype + 
                             ' to this ' + sUser[simUser.superUser].infotype + '\'s hobbyArray.');
+                        sUser[simUser.superUser].hobbiesArray = [];
+                        sUser[simUser.superUser].hobbiesArray.push(simUser);
+                    }
+                    
+                    // This element is an updated hobby, previous hobbies (push to hobby array)
+                    if ((simUser.infotype === 'updated-hobby') && (sUser[simUser.superUser].hobbiesArray)) {
+
+                        // JavaScript array(s) includes()
+                        console.log('Already in hobbiesArray', sUser[simUser.superUser].hobbiesArray);
+                        console.log('Potential add to hobbiesArray', simUser);
+
+                        const attachableHobby = sUser[simUser.superUser].hobbiesArray.includes(simUser);
+                        console.log('attachableHobby', attachableHobby);
+
+                        if (!attachableHobby) {
+                            sUser[simUser.superUser].hobbiesArray.push(simUser);
+                        }
 
                     }
+
+                    // This element is an updated favorite, no previous favorites (create favorites array)
+                    // if ((simUser.infotype === 'updated-favorite') && (!sUser[simUser.superUser].favoritesArray)) {
+                    //     console.log('Considering adding this ' + simUser.infotype + 
+                    //         ' to this ' + sUser[simUser.superUser].infotype + '\'s favoritesArray.');
+                    //     sUser[simUser.superUser].favoritesArray = [];
+                    //     sUser[simUser.superUser].favoritesArray.push(simUser);
+
+                    // }
+                    
+                    // if ((simUser.infotype === 'updated-favorite') && (sUser[simUser.superUser].favoritesArray)) {
+
+                    //     // TODO: Current Development - Line 133 is a big problem
+                    //     // This element is an updated favorite, previous favorites (push to favorites array)
+                    //     console.log('Considering adding this ' + simUser.infotype + 
+                    //         ' to this ' + sUser[simUser.superUser].infotype + '\'s favoritesArray.');
+                    //     // sUser[simUser.superUser].favoritesArray = [];
+                    //     // sUser[simUser.superUser].favoritesArray.push(simUser);
+                    // }
 
                 }
                 // If current element is a hobby, add to the parent object's hobby array.
