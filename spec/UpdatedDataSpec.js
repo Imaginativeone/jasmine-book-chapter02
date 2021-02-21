@@ -103,7 +103,8 @@ describe('Updated Data Spec', () => {
 
                     if (simUser.infotype === 'updated-hobby') {
 
-                        console.log('Hello');
+                        console.log('Considering adding this ' + simUser.infotype + 
+                            ' to this ' + sUser[simUser.superUser].infotype + '\'s hobbyArray.');
 
                     }
 
