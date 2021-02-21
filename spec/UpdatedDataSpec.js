@@ -87,21 +87,50 @@ describe('Updated Data Spec', () => {
 
         // If this object already exists
         if (sUser[simUser.superUser]) { 
+
+            console.log('********** Beg of EXT element **********');
             console.log('sUser[' + simUser.superUser + '] already exists. It\'s an ' + simUser.infotype);
             console.log(sUser[simUser.superUser]);
 
-            sUser[simUser.superUser].gribbit = 0;
+            // sUser[simUser.superUser].gribbit = 0;
 
+            // TODO: Current Development
+            // Determine when a hobby does not exist. If my current entity is a hobby, add it to the hobby array.
+            // if ((1 === 1) && (sUser[simUser.superUser].hobbyArray.length === 0)) {
+            //     console.log('Hobby array is empty');
+            // }
+            console.log('********** End of EXT element **********');
+
+        // If this object does not exist, then create it
         } else {
+
+            console.log('********** Beg of NEW element **********');
             console.log('Create a new sUser[' + simUser.superUser + '] here. It\'s an ' + simUser.infotype);
             sUser[simUser.superUser] = simUser;
-            sUser[simUser.superUser].hobbyArray = [];
+            // sUser[simUser.superUser].hobbyArray = [];
+
+            // Create the favorites array and add this element to it.
+            if (simUser.infotype === 'updated-hobby') {
+                console.log('Add this favorite to NEW empty hobby array.');
+                sUser[simUser.superUser].hobbiesArray = [];
+                sUser[simUser.superUser].hobbiesArray.push(simUser);
+            }
+
+            // Create the favorites array and add this element to it.
+            if (simUser.infotype === 'updated-favorite') {
+                console.log('Add this favorite to NEW empty favorites array.');
+                sUser[simUser.superUser].favoritesArray = [];
+                sUser[simUser.superUser].favoritesArray.push(simUser);
+            }
 
             console.log(sUser[simUser.superUser]);
+            console.log('********** End of NEW element **********');
         }
 
       })
       
+      sUser.shift();
+
       // .sort((a, b) => a.id-b.id);
 
       // console.log('data', data);
