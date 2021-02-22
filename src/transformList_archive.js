@@ -1,34 +1,6 @@
-let allPromises = Promise.all([tryUrl('/users'), tryUrl('/hobbies'), tryUrl('/favorites')]).then(result => { return result })
-  .then((data) => {
-
-    data[0] = correctUsers(data[0], 'PA');
-    data[1] = correctHobbies(data[1]);
-    data[2] = correctFavorites(data[2]);
-
-    return data;
-  })
-  .then(data => Promise.all([
-    tryUrl('/updateUsers',     data[0], 'post'),
-    tryUrl('/updateHobbies',   data[1], 'post'),
-    tryUrl('/updateFavorites', data[2], 'post')
-  ]))    
-  .then((updatedArray) => {
-
-    const superList  = getSuperList(updatedArray);
-    const sUser      = transformList(superList);
-    const finalShape = reshape(sUser);
-    
-    console.log('finalShape', finalShape);
-})
-
-////////////////////////////////////////////////////
-//
-// Functions
-//
-////////////////////////////////////////////////////
 function transformList(superList) {
   
-      let sUser = [];
+    let sUser = [];
     superList.map((simUser) => {
       
       // If this object already exists
@@ -97,82 +69,4 @@ function transformList(superList) {
 
   return sUser;
 
-}
-
-function getSuperList(updatedArray) {
-
-  const flaggedUsrs = addTypeFlag(updatedArray[0], 'updated-user');
-  const flaggedHobs = addTypeFlag(updatedArray[1], 'updated-hobby');
-  const flaggedFavs = addTypeFlag(updatedArray[2], 'updated-favorite');
-      
-  const data = flaggedUsrs.concat(flaggedHobs, flaggedFavs);
-  
-  const superList = data.map((superUser) => {
-
-    if (!superUser.user_id) {
-        superUser.superUser = superUser.id;
-    } else {
-        superUser.superUser = superUser.user_id;
-    }
-
-    return superUser;
-
-  }).sort((a, b) => a.superUser - b.superUser);
-
-  // return array;
-  return superList;
-
-}
-
-function tryUrl(url, data, method='get') {
-  return fetch(url, { 
-    method: method, 
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(data) || null 
-  }).then(res => res.json())
-}
-
-function correctUsers(users, state) {
-  return users.filter(user => {
-    if (!user.state) {
-      user.state = state;
-      return user;
-    }
-  })
-}
-
-function correctHobbies(hobbies) {
-  return hobbies.filter(hobby => {
-    if(!hobby.experience) {
-      switch(hobby.years_played) {
-        case 1:
-        hobby.experience = 'beginner';
-        break;
-        case 2:
-        hobby.experience = 'advanced';
-        break;
-        case 3:
-        hobby.experience = 'expert';
-        break;
-      }
-      return hobby;
-    }
-  })
-}
-
-function correctFavorites(favorites) {
-  return favorites.filter((favorite) => {
-    if (!favorite.type) {
-      favorite.type = "other"
-      return favorite;
-    }
-  })
-}
-
-// addTypeFlag
-function addTypeFlag(array, type) {
-  return newType = array.map((item) => {
-    item.infotype = type;
-    return item;
-  })
 }

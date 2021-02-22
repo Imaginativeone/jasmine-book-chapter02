@@ -1,6 +1,6 @@
-// addTypeFlag
 function addTypeFlag(array, type) {
-  return array.map((item) => {      
+  return newType = array.map((item) => {
     item.infotype = type;
-  });
+    return item;
+  })
 }
