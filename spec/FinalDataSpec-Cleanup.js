@@ -4,7 +4,7 @@ describe('Updated Data Spec', () => {
 
   let allPromises = Promise.all([tryUrl('/users'), tryUrl('/hobbies'), tryUrl('/favorites')])
     .then(result => {
-        expect(true).toEqual(true);        
+        expect(true).toEqual(true);
         return result;
     })
 
@@ -188,18 +188,14 @@ describe('Updated Data Spec', () => {
             let newShapeArray = [];
             sUser.map((rUser) => {
 
-              // newShape[rUser.superUser].testProperty = 1
-
               newShape.rUser = rUser;
+              newShape.id = rUser.superUser;
+              
               newShapeArray.push(newShape.rUser);
               
-              rUser.testProperty = 1;
-              rUser.info = rUser;
               rUser.id = rUser.superUser;
 
-              // return rUser;
-
-              return newShape;
+              return newShapeArray;
 
             })
 
