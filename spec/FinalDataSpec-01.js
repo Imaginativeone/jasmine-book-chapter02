@@ -1,3 +1,68 @@
+describe("Basic test works", function() {
+  
+  it('turns nothing into fulfilled promise', (done) => {
+    var testResolve = ensureReturnsPromise(function() {});
+    console.log('testResolve', testResolve());
+
+    var returnedPromise = testResolve();
+    expect(returnedPromise.then).not.toBe(undefined);
+
+    returnedPromise.then((value) => {
+      expect(value).toBe(undefined);
+      done();
+    }, function(error) {
+      expect('promise').toBe('resolved');
+      done();
+    });
+  });
+});
+
+it("turns non-thenables into fulfilled promises", function(done) {
+
+  var testResolve = ensureReturnsPromise(function() {
+    return "Hi";
+  });
+
+  var testPromiseAll = Promise.all([]);
+  console.log('testPromiseAll', testPromiseAll);
+
+  var returnedPromise = testResolve();
+  console.log('returnedPromise', returnedPromise);
+
+  expect(returnedPromise.then).not.toBe(undefined);
+  expect(testPromiseAll).not.toBe(undefined);
+
+  returnedPromise.then(function(value) {
+    expect(value).toEqual("Hi");
+    done();
+  }, function(error) {
+    expect("promise").toBe("resolved");
+    done();
+  });
+});
+
+// describe("Using a promise: having trouble", function() {
+  
+//   it('turns nothing into fulfilled promise', (done) => {
+
+//     // let p = Promise.resolve('hello');
+    
+//     var testResolve = ensureReturnsPromise(Promise.resolve());
+//     console.log('testResolve', testResolve());
+
+//     var returnedPromise = testResolve();
+//     expect(returnedPromise.then).not.toBe(undefined);
+
+//     returnedPromise.then((value) => {
+//       expect(value).toBe(undefined);
+//       done();
+//     }, function(error) {
+//       expect('promise').toBe('resolved');
+//       done();
+//     });
+//   });
+// });
+
 let allPromises = Promise.all([tryUrl('/users'), tryUrl('/hobbies'), tryUrl('/favorites')]).then(result => { return result })
   .then((data) => {
 
@@ -129,25 +194,25 @@ describe("ensureReturnsPromise", function() {
   // });
 });
 
-describe('Demonstration testing of a promise', () => {
+// describe('Demonstration testing of a promise', () => {
 
-  it('Demonstration spec(ification)', (done) => {
-    var testResolve = ensureReturnsPromise(function() {});
-    console.log('testResolve', testResolve());
+//   it('Demonstration spec(ification)', (done) => {
+//     var testResolve = ensureReturnsPromise(function() {});
+//     console.log('testResolve', testResolve());
 
-    var returnedPromise = testResolve();
-    expect(returnedPromise.then).not.toBe(undefined);
+//     var returnedPromise = testResolve();
+//     expect(returnedPromise.then).not.toBe(undefined);
 
-    returnedPromise.then((value) => {
-      expect(value).toBe(undefined);
-      done();
-    }, function(error) {
-      expect('promise').toBe('resolved');
-      done();
-    });
-  });
+//     returnedPromise.then((value) => {
+//       expect(value).toBe(undefined);
+//       done();
+//     }, function(error) {
+//       expect('promise').toBe('resolved');
+//       done();
+//     });
+//   });
 
-});
+// });
 
 // describe("itP promises", function() {
 //   beforeEach(function() {
