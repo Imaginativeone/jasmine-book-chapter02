@@ -5,9 +5,6 @@ let allPromises = Promise.all([tryUrl('/users'), tryUrl('/hobbies'), tryUrl('/fa
     data[1] = correctHobbies(data[1]);
     data[2] = correctFavorites(data[2]);
 
-    var testResolve = ensureReturnsPromise(function() {});
-    console.log('testResolve', testResolve());
-
     return data;
   })
   .then(data => Promise.all([
@@ -40,21 +37,21 @@ function reshape() {}
 
 describe("ensureReturnsPromise", function() {
   
-  // it("turns nothing into fulfilled promise", function() {
+  it('turns nothing into fulfilled promise', (done) => {
+    var testResolve = ensureReturnsPromise(function() {});
+    console.log('testResolve', testResolve());
 
-  //   var testResolve = ensureReturnsPromise(function() {});
-  //   var returnedPromise = testResolve('Hello');
+    var returnedPromise = testResolve();
+    expect(returnedPromise.then).not.toBe(undefined);
 
-  //   expect(returnedPromise.then).not.toBe(undefined);
-
-  //   returnedPromise.then(function(value) {
-  //     expect(value).toBe(undefined);
-  //     done();
-  //   }, function(error) {
-  //     // expect("promise").toBe("resolved");
-  //     done();
-  //   });
-  // });
+    returnedPromise.then((value) => {
+      expect(value).toBe(undefined);
+      done();
+    }, function(error) {
+      expect('promise').toBe('resolved');
+      done();
+    });
+  });
 
   // it("turns non-thenables into fulfilled promises", function() {
   //   var testResolve = ensureReturnsPromise(function() {
@@ -130,6 +127,26 @@ describe("ensureReturnsPromise", function() {
   //   //   done();
   //   // });
   // });
+});
+
+describe('Demonstration testing of a promise', () => {
+
+  it('Demonstration spec(ification)', (done) => {
+    var testResolve = ensureReturnsPromise(function() {});
+    console.log('testResolve', testResolve());
+
+    var returnedPromise = testResolve();
+    expect(returnedPromise.then).not.toBe(undefined);
+
+    returnedPromise.then((value) => {
+      expect(value).toBe(undefined);
+      done();
+    }, function(error) {
+      expect('promise').toBe('resolved');
+      done();
+    });
+  });
+
 });
 
 // describe("itP promises", function() {
