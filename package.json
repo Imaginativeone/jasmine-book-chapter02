@@ -6,6 +6,7 @@
   "directories": {
     "lib": "lib"
   },
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -20,7 +21,8 @@
   },
   "homepage": "https://github.com/Imaginativeone/jasmine-book-chapter02#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "wait-until-promise": "^1.0.0"
   },
   "devDependencies": {
     "jasmine-es6-promise-matchers": "^2.1.2"
