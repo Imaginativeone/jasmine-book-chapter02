@@ -1,21 +1,21 @@
 describe("Test Promise.all()", function() {
   
-  describe('itP promises', () => {
+  // describe('itP promises', () => {
     
-    beforeEach(function() {
-      this.testChainLevel = 0;
-    });
+  //   beforeEach(function() {
+  //     this.testChainLevel = 0;
+  //   });
 
-    itP("pass successful synchronous tests", function(done) {
+  //   itP("pass successful synchronous tests", function(done) {
       
-      let p = Promise.resolve('Hi');
-      // expect(true).toBeTruthy();
-      expect(p).not.toBe(undefined);
-      done();
+  //     let p = Promise.resolve('Hi');
+  //     // expect(true).toBeTruthy();
+  //     expect(p).not.toBe(undefined);
+  //     done();
 
-    });
+  //   });
 
-  })
+  // })
 
   it("Return the actual Promise", function(done) {
     
