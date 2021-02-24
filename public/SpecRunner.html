@@ -8,46 +8,8 @@
   <link rel="shortcut icon" type="image/png" href="lib/jasmine-2.1.3/jasmine_favicon.png">
   <link rel="stylesheet" href="lib/jasmine-2.1.3/jasmine.css">
 
-  <script src="lib/jasmine-2.1.3/jasmine.js"></script>
-  <script src="lib/jasmine-2.1.3/jasmine-html.js"></script>
-  <script src="lib/jasmine-2.1.3/boot.js"></script>
-
-  <!-- include source files here... -->
-  <script type="text/javascript" src="src/TestPromise.js"></script>
-  <script type="text/javascript" src="src/tryUrl.js"></script>
-  <script type="text/javascript" src="src/addTypeFlag.js"></script>
-  <script type="text/javascript" src="src/reshape.js"></script>
-  <!-- <script type="text/javascript" src="src/getSuperList.js"></script> -->
-  <!-- <script type="text/javascript" src="src/transformList.js"></script> -->
-
-  <!-- Corrections -->
-  <script type="text/javascript" src="src/correctUsers.js"></script>
-  <script type="text/javascript" src="src/correctHobbies.js"></script>
-  <script type="text/javascript" src="src/correctFavorites.js"></script>
-  
-  <script type="text/javascript" src="src/Investment.js"></script>
-  <script type="text/javascript" src="src/Stock.js"></script>
-  
-  <!-- <script type="text/javascript" src="src/Player.js"></script>
-  <script type="text/javascript" src="src/Song.js"></script> -->
-
-  <!-- include spec files here... -->
-  <script type="text/javascript" src="spec/FirstPromiseTests.js"></script>
-  <!-- <script type="text/javascript" src="spec/FinalDataSpec-01.js"></script> -->
-  <!-- <script type="text/javascript" src="spec/SinglePromiseChainSpec.js"></script> -->
-  <!-- <script type="text/javascript" src="spec/CorrectedDataSpec.js"></script> -->
-  <!-- <script type="text/javascript" src="spec/UpdatedDataSpec.js"></script> -->
-  <!-- <script type="text/javascript" src="spec/FinalDataSpec.js"></script> -->
-  <!-- <script type="text/javascript" src="spec/FinalDataSpec-Cleanup.js"></script> -->
-  <!-- <script type="text/javascript" src="spec/InvestmentSpec.js"></script>
-  <script type="text/javascript" src="spec/SpecHelper.js"></script>
-  <script type="text/javascript" src="spec/PlayerSpec.js"></script> -->
-
-  <!-- <script type="module" src="src/waitUntilPromise.js"></script> -->
-  <!-- <script type="module" src="src/itpromise.js"></script> -->
-
-  <script>
-    // Quick and dirty ES6 promise testing (because I couldn't find any better)
+    <script>
+      // Quick and dirty ES6 promise testing (because I couldn't find any better)
       // MIT License
 
       function makeResolvedPromise(value) {
@@ -120,12 +82,55 @@
         return Array.prototype.slice.call(pseudoArray);
       }
 
-      function itP() {
+      function itP(arguments, func) {
+
+        console.log('arguments', arguments);
+        console.log('func', func);
+
         var args = makeRealArray(arguments);
-        return itpBase.apply(undefined, [it].concat(args));
+        return itpBase.apply(func(), [it].concat(args));
+        // return itpBase.apply(undefined, [it].concat(args));
       }
 
-  </script>
+    </script>
+
+  <script src="lib/jasmine-2.1.3/jasmine.js"></script>
+  <script src="lib/jasmine-2.1.3/jasmine-html.js"></script>
+  <script src="lib/jasmine-2.1.3/boot.js"></script>
+
+  <!-- include source files here... -->
+  <script type="text/javascript" src="src/TestPromise.js"></script>
+  <script type="text/javascript" src="src/tryUrl.js"></script>
+  <script type="text/javascript" src="src/addTypeFlag.js"></script>
+  <script type="text/javascript" src="src/reshape.js"></script>
+  <!-- <script type="text/javascript" src="src/getSuperList.js"></script> -->
+  <!-- <script type="text/javascript" src="src/transformList.js"></script> -->
+
+  <!-- Corrections -->
+  <script type="text/javascript" src="src/correctUsers.js"></script>
+  <script type="text/javascript" src="src/correctHobbies.js"></script>
+  <script type="text/javascript" src="src/correctFavorites.js"></script>
+  
+  <script type="text/javascript" src="src/Investment.js"></script>
+  <script type="text/javascript" src="src/Stock.js"></script>
+  
+  <!-- <script type="text/javascript" src="src/Player.js"></script>
+  <script type="text/javascript" src="src/Song.js"></script> -->
+
+  <!-- include spec files here... -->
+  <script type="text/javascript" src="spec/FirstPromiseTests.js"></script>
+  <!-- <script type="text/javascript" src="spec/FinalDataSpec-01.js"></script> -->
+  <!-- <script type="text/javascript" src="spec/SinglePromiseChainSpec.js"></script> -->
+  <!-- <script type="text/javascript" src="spec/CorrectedDataSpec.js"></script> -->
+  <!-- <script type="text/javascript" src="spec/UpdatedDataSpec.js"></script> -->
+  <!-- <script type="text/javascript" src="spec/FinalDataSpec.js"></script> -->
+  <!-- <script type="text/javascript" src="spec/FinalDataSpec-Cleanup.js"></script> -->
+  <!-- <script type="text/javascript" src="spec/InvestmentSpec.js"></script>
+  <script type="text/javascript" src="spec/SpecHelper.js"></script>
+  <script type="text/javascript" src="spec/PlayerSpec.js"></script> -->
+
+  <!-- <script type="module" src="src/waitUntilPromise.js"></script> -->
+  <!-- <script type="module" src="src/itpromise.js"></script> -->
 
 </head>
 

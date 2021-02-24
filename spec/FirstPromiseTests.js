@@ -1,17 +1,31 @@
 describe("Test Promise.all()", function() {
   
+  describe('itP promises', () => {
+    
+    beforeEach(function() {
+      this.testChainLevel = 0;
+    });
+
+    itP("pass successful synchronous tests", function(done) {
+      
+      let p = Promise.resolve('Hi');
+      // expect(true).toBeTruthy();
+      expect(p).not.toBe(undefined);
+      done();
+
+    });
+
+  })
+
   it("Return the actual Promise", function(done) {
     
-    var testResolve = ensureReturnsPromise(
-      
+    var testResolve = ensureReturnsPromise(      
       () => { 
         let allPromises = Promise.all([tryUrl('/users'), tryUrl('/hobbies'), tryUrl('/favorites')]).then(result => { return result })        
-        // let p = Promise.resolve('Hi');
         console.log('allPromises', allPromises);
         return allPromises;
       }
-    
-      );
+    );
 
     let returnedPromise = testResolve();
     console.log('returnedPromise', returnedPromise);
